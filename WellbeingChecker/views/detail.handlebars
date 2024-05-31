@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="mt-6 row">
+    <div class="col-md-12">
+      <div class="row d-flex justify-content-center mt-5">
+        <div class="col-md-8">
+          {{#if reports}}
+            <h1>
+              <a href="/dashboard" class="btn btn-sm btn-outline-primary me-4"><-Back</a>
+              Details for {{reports.0.disaster.name}}
+            </h1>
+            <hr />
+            <div class="row">
+                <div class="col-md-12 card">
+                  <div class="card-body">
+                    {{!-- This is a partial --}}
+                    {{ reports }}
+                  </div>
+                </div>
+            </div>
+          {{/if}}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

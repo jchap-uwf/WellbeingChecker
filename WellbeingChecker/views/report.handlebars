@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row d-flex justify-content-center mt-5">
+    <div class="col-md-7">
+      <h2>Create Report</h2>
+      <p>File a new report to let your friends and family know that you are safe and well.</p>
+      <form method="post" action="/report">
+        <div class="mb-3">
+          <label for="status">Disaster</label>
+          {{!-- Loop over each disaster and dynamically create options in the select box --}}
+          <select class="form-control" name="disaster" id="disaster" required>
+            <option value="">-- Choose a disaster --</option>
+            {{#each disasters as |d|}}
+            <option value="{{d._id}}">{{d.name}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" name="firstName" placeholder="First Name" required>
+        </div>
+        <div class="mb-3">
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control" name="lastName" placeholder="Last Name" required>
+        </div>
+
+        <div class="mb-3">
+          <label>Phone Number</label>
+          <div class="row">
+            <div class="col-3">
+              <label for="areaCode" class="visually-hidden">Area Code</label>
+              <input type="text" class="form-control" name="areaCode" placeholder="area code" required  pattern="[0-9]{3}">
+            </div>
+            <div class="col-4">
+              <label for="extension" class="visually-hidden">Phone Exchange</label>
+              <input type="text" class="form-control" name="exchange" placeholder="exchange" required pattern="[0-9]{3}" >
+            </div>
+            <div class="col-5">
+              <label for="extension" class="visually-hidden">Phone Extension</label>
+              <input type="text" class="form-control" name="extension" placeholder="extension" required pattern="[0-9]{4}">
+            </div>
+          </div>
+        </div>
+       <div class="mb-3">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" name="email" placeholder="Email">
+        </div>
+        <div class="mb-3">
+          <label for="currentLocation">Current Location</label>
+          <input type="text" class="form-control" name="currentLocation" placeholder="Ex: My mom's house">
+        </div>
+        <div class="mb-3">
+          <label for="statusOfResidence">Status of your residence</label>
+          <textarea class="form-control" rows="5" name="statusOfResidence"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="message">Safe and well message</label>
+          <textarea class="form-control" rows="5" name="message"></textarea>
+        </div>
+        <div class="mb-3">
+          <input type="submit" value="Submit" class="btn btn-primary">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

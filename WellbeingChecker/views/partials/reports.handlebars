@@ -1,0 +1,24 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+          <tr>
+             <th>Full Name</th>
+             <th>Phone Number</th>
+             <th>Current Location</th>
+             <th>Date</th>
+             {{#if isAdmin}}<th>Delete</th>{{/if}}
+          </tr>
+        </thead>
+        <tbody>
+            {{#each reports as |r|}}
+                <tr>
+                    <td>{{r.firstName}} {{r.lastName}}</td>
+                    <td>({{r.areaCode}}) {{r.exchange}}-{{r.extension}}</td>
+                    <td>{{r.currentLocation}}</td>
+                    <td>{{formatDate r.dateFiled "MM/DD/YYYY"}}</td> {{!-- Uses the handlebars helper to format the date with dayjs --}}
+                    {{#if ../isAdmin}}<td><a href="/dashboard/remove/{{r._id}}">Delete</a></td>{{/if}} {{!-- This looks one level up for the isAdmin variable--}}
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

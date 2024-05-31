@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="mt-6 row">
+    <div class="col-md-12">
+      <div class="row d-flex justify-content-center mt-5">
+
+        <div class="col-md-7">
+          <h1>Admin Dashboard</h1>
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">Current Disasters</h2>
+
+              {{#if disasters}}
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Disaster Name</th>
+                      <th>Report Count</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each disasters}}
+                      <tr>
+                        <td>{{#each _id}}
+                            <a href="/dashboard/detail/{{_id}}">{{name}}</a>
+                          {{/each}}
+                        </td>
+                        <td>{{count}}</td>
+                      </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              {{else}}
+                <p>There are currently no disaster records to display.</p>
+              {{/if}}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-6 row">
+    <div class="col-md-12">
+      <div class="row d-flex justify-content-center mt-5">
+        <div class="col-md-7">
+          <div class="card">
+            <div class="card-body">
+              {{#if accountCreated}}
+                <div class="alert alert-success" role="alert">Account created.</div>
+              {{/if}}
+              <h2 class="card-title">Create User</h2>
+              <p>Create a new user account.</p>
+              <form method="post" action="/newUser">
+                <div class="mb-3">
+                  <label for="username">Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="username"
+                    id="username"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    id="password"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="access">Access</label>
+                  <select class="form-control" name="access" id="access">
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

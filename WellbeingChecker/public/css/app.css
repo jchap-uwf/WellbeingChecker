@@ -1,0 +1,19 @@
+h1 { font-size: 2rem}
+h1.card-title { 
+  font-size: 1.7rem;
+  text-align: center;
+}
+h2.card-title { font-size: 1.3rem}
+
+body {
+  background: #eee !important;
+}
+
+/* Alert box styling */
+.floating-alert {
+  margin: 0 20%;
+  width: 60%;
+  position: fixed;
+  top: 35px;
+  z-index: 1000;
+}

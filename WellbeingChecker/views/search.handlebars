@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row d-flex justify-content-center mt-5">
+    <div class="col-md-7">
+      <h2>Search for your loved one</h2>
+      <p>We need their full name and phone number to locate them in our system.</p>
+      <form method="POST" action="/search">
+        <div class="mb-3">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" name="firstName" placeholder="First Name">
+        </div>
+        <div class="mb-3">
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control" name="lastName" placeholder="Last Name">
+        </div>
+
+        <div class="mb-3">
+          <label for="areaCode">Phone Number</label>
+          <div class="row">
+            <div class="col-3">
+              <input type="number" class="form-control" name="areaCode" placeholder="ex: 850">
+            </div>
+            <div class="col-4">
+              <input type="number" class="form-control" name="exchange" placeholder="exchange" required>
+            </div>
+            <div class="col-5">
+              <input type="number" class="form-control" name="extension" placeholder="extension" required>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <input type="submit" class="btn btn-primary" name="search" value="search" required>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center mt-5">
+    <div class="col-md-12">
+      {{!-- If there is no user logged in, show a login prompt --}}
+      {{#unless user}}
+      <hr />
+      <h4>File a Report</h4>
+      <p>Are you in an affected area and want to file a report? <a href="/login">Log in</a> using the username and
+        password given to you at the shelter.</p>
+      {{/unless}}
+
+      {{!-- If we have any search results, show them here below the search form --}}
+      {{#if reports}}
+      <hr />
+      <div class="row">
+        <div class="col-md-12 card">
+          <div class="card-body">
+            <h2 class="card-title">Results</h2>
+            {{!-- This is a partial --}}
+            {{> reports }}
+          </div>
+        </div>
+      </div>
+      {{/if}}
+    </div>
+  </div>
+</div>
